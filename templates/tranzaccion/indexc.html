@@ -1,0 +1,51 @@
+{%include 'headerc.html'%}
+<!-- WELCOME-->
+ <section class="welcome p-t-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="title-4">Hola bienvenido
+                    <span></span>
+                </h1>
+                <hr class="line-seprate">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END WELCOME-->
+<br>
+<br>
+<a href="{{url_for('create')}}" class="btn btn-success">
+    Ingresar nueva transaccion
+</a>
+<br> 
+<br>
+<table class="table table-light">
+    <thead class="thead-light">
+        <tr>
+            <th>establecimiento</th>
+            <th>hora</th>
+            <th>Fecha</th>
+            <th>monto</th>
+            <th>tipo fraude</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for tranzacciones in tranzacciones %}
+            <tr>
+                <td>{{tranzacciones[4]}}</td>
+                <td>{{tranzacciones[5]}}</td>
+                <td>{{tranzacciones[8]}}</td>
+                <td>S/. {{tranzacciones[6]}}</td>
+                <td>
+                {% if tranzacciones[7]==1 %}
+                    {{"Fraude"}}
+                {% elif tranzacciones[7]==0 %}
+                    {{"No fraude"}}
+                {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+{%include 'footer.html'%}
